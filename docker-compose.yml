@@ -1,0 +1,14 @@
+version: '3'
+services:
+  w2v:
+    container_name: w2v-service
+    image: jease0502/w2v-service
+    build: .
+    restart: always
+    environment:
+      - PYTHONIOENCODING=utf-8
+    ports:
+      - 127.0.0.1:4088:4088
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/usr/local/src/w2v/data:ro
