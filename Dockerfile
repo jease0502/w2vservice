@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:2.4.1
 
-WORKDIR /usr/local/src/CKIPTagger
+WORKDIR /usr/local/src/w2v
 
 ADD requirements.txt .
 RUN pip3 --no-cache-dir install -r requirements.txt

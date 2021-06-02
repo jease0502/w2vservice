@@ -31,3 +31,7 @@ W2V 使用 搜狐實驗室 所提供之資料，進行訓練後之模型，拿�
     - parameter
         - `sentence_list`: sentence list for CKIP tagging, split multiple sentences by linebreak(`\n`)
 
+## Test W2V
+1. Send request using curl
+    ``` bash
+    curl -X POST localhost:4088 -F $'sentence_list=閱讀'

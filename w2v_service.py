@@ -10,6 +10,7 @@ from fastapi.params import Form
 from fastapi.responses import PlainTextResponse, RedirectResponse
 
 # model variables
+bow_model = None
 
 app = FastAPI(
     title="W2V Service",
@@ -33,17 +34,22 @@ async def index():
 async def tokenize(
         sentence_list: str = Form(
             ...,
-            description=r'以下使用範例單詞[閱讀]進行示範(`\n`)',
+            description=r'word demo(`\n`)',
             example='閱讀'
         )
 ):
     global bow_model
-    # Load model
-    bow_model = word2vec.Word2Vec.load('./data/ckip.model.bin')
+    sentence_list = sentence_list.split('\n')
 
-    # Show results
-    get_str = bow_model.most_similar(sentence_list)
-    return get_str[0][0] + '\n'
+    def print_w2v_word(word_sentence, pos_sentence):   
+        # Load model
+        bow_model = word2vec.Word2Vec.load('./data/ckip.model.bin')
+        # Show results
+        get_str = bow_model.most_similar(sentence_list)
+        return sentence_list
+    ans = print_w2v_word(sentence_list)
+    return ans
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=4088)
