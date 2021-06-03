@@ -3,8 +3,6 @@
 # -*- coding: UTF-8 -*-
 import uvicorn
 from gensim.models import word2vec
-import numpy as np
-import pandas as pd
 from fastapi import FastAPI
 from fastapi.params import Form
 from fastapi.responses import PlainTextResponse, RedirectResponse
@@ -45,7 +43,7 @@ async def tokenize(
         bow_model = word2vec.Word2Vec.load('./data/ckip.model.bin')
         # Show results
         get_str = bow_model.most_similar(sentence_list)
-        return get_str
+        return get_str[0][0]
     ans = print_w2v_word(sentence_list)
     return ans
 
