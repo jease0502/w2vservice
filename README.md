@@ -7,19 +7,19 @@
 W2V 使用 搜狐實驗室 所提供之資料，進行訓練後之模型，拿來做為預測使用
 - [資料網址](http://www.sogou.com/labs/resource/cs.php)
 
-## 啟動伺服器
-1. 使用 `docker-compose` 開啟伺服器
+## Start service
+1. Start the service using `docker-compose`
     ```
     docker-compose up -d
     ```
-    如果需要重新編譯 image , 在啟動時加上 `--build`
+    If you want to rebuild the image, add `--build` flag when startup
     ```
     docker-compose up --build -d
     ```
-2. 服務所在的 port `4088`
+2. Service is now on port `4088`
 
-## 關閉伺服器
-1. 關閉伺服器使用  `docker-compose`
+## Stop service
+1. Stop the service using `docker-compose`
     ```
     docker-compose down
     ```
@@ -29,7 +29,7 @@ W2V 使用 搜狐實驗室 所提供之資料，進行訓練後之模型，拿�
     - method: `POST`
     - route: `/`
     - parameter
-        - `sentence_list`: word string for W2V
+        - `sentence_list`: sentence list for CKIP tagging, split multiple sentences by linebreak(`\n`)
 
 ## Test W2V
 1. Send request using curl

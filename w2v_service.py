@@ -43,7 +43,7 @@ async def tokenize(
         bow_model = word2vec.Word2Vec.load('./data/ckip.model.bin')
         # Show results
         get_str = bow_model.most_similar(sentence_list)
-        return get_str[0][0]
+        return get_str
     ans = print_w2v_word(sentence_list)
     return ans
 
